@@ -1,0 +1,19 @@
+{
+  "id": "worker",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "jairodiaz/railstemplate_webapp",
+      "network": "BRIDGE",
+      "parameters": [
+        { "key": "env", "value": "RACK_ENV=production" },
+        { "key": "env", "value": "RAILS_ENV=production" },
+        { "key": "env", "value": "SECRET_KEY_BASE=560ea30c110b0ce9112b248441bde2e74d3d5120898894f1aef3202c63e9a3423f400cdd73dc58f7d71251fa0d991df3da671bba0f840521e3e48f55e299e11d" }
+      ]
+    }
+  },
+  "instances": 2,
+  "cpus": 0.5,
+  "mem": 256,
+  "cmd": "bundle exec sidekiq -e production -c 5"
+}

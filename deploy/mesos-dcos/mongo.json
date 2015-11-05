@@ -1,0 +1,19 @@
+{
+  "container": {
+    "docker": {
+      "image": "mongo:3.0",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 27017, "hostPort": 27017, "servicePort": 27017, "protocol": "tcp" }
+      ]
+    }
+  },
+  "id": "mongo",
+  "type": "DOCKER",
+  "instances": 1,
+  "cpus": 0.5,
+  "mem": 128,
+  "uris": [],
+  "cmd": "mongod --smallfiles --quiet",
+  "constraints": [["hostname", "UNIQUE", "10.0.1.80"]]
+}

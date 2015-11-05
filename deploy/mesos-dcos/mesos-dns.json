@@ -1,0 +1,19 @@
+{
+  "id": "mesos-dns",
+  "instances": 1,
+  "cpus": 0.3,
+  "mem": 128,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "nickpoorman/docker-mesos-dns",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 53, "hostPort": 53, "protocol": "udp" }
+      ],
+      "parameters": [
+        { "key": "env", "value": "ZK_URI=zk://192.168.99.100:2181/mesos" }
+      ]
+    }
+  }
+}

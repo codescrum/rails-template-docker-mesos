@@ -1,0 +1,23 @@
+{
+  "id": "rails-template",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "jairodiaz/railstemplate_webapp",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 8080, "hostPort": 80, "servicePort": 80, "protocol": "tcp" }
+      ],
+      "parameters": [
+        { "key": "env", "value": "RACK_ENV=production" },
+        { "key": "env", "value": "RAILS_ENV=production" },
+        { "key": "env", "value": "SECRET_KEY_BASE=560ea30c110b0ce9112b248441bde2e74d3d5120898894f1aef3202c63e9a3423f400cdd73dc58f7d71251fa0d991df3da671bba0f840521e3e48f55e299e11d" }
+      ]
+    }
+  },
+  "instances": 1,
+  "cpus": 0.3,
+  "mem": 512,
+  "cmd": "bundle exec unicorn -E production -c config/unicorn.rb",
+  "acceptedResourceRoles": ["slave_public"]
+}
